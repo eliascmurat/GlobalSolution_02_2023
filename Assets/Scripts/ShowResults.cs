@@ -16,6 +16,8 @@ public class ShowResults : MonoBehaviour
     private int notaFinal;
     private int acertos;
     
+    public PlayerController _PC;
+    
     void Start()
     {
         idLevel = PlayerPrefs.GetInt("idLevel");
@@ -29,7 +31,7 @@ public class ShowResults : MonoBehaviour
 
         txtNota.text = notaFinal.ToString();
         txtInfoLevel.text = "Você acertou " + acertos + " de 6 perguntas";
-
+        
         if (notaFinal >= 9)
         {
             estrela1.SetActive(true);
@@ -48,6 +50,8 @@ public class ShowResults : MonoBehaviour
             estrela2.SetActive(false);
             estrela3.SetActive(false);
         }
+        
+        _PC.ChangeSprite(notaFinal);
     }
 
     public void TryAgain()
